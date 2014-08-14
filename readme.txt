@@ -30,8 +30,9 @@ Due to the very hacky nature of this application, you must understand that this 
 The tool has been tested with success on XP SP2 32-bit and Windows 7 SP1 64-bit. Please be aware of limitations when running on nt6.x.
 
 Limitation
-At nt6.x new security measures have been implemented, preventing you from writing directly to sectors inside filesystem. Before doing anything like this, we obtain a lock on the target volume. However, this is not possible to in a few situations (systemdrive, volume where pagefile is on, volume where HideAndProtect is run from, and maybe a ew more). These restrictions do not apply for nt5.x (anything before Vista).
+At nt6.x new security measures have been implemented, preventing you from writing directly to sectors inside filesystem. Before doing anything like this, we obtain a lock on the target volume. However, this is not possible to in a few situations (systemdrive, volume where pagefile is on, volume where HideAndProtect is run from, and maybe a few more). These restrictions do not apply for nt5.x (anything before Vista). As of v1.0.0.2 a kernel mode driver has been added to overcome the issue on nt6.x. Note that on 64-bit drivers require to be signed and trusted. The implemented driver is self-signed, and thus requires the system to have been booted with the TESTSIGNING configuration, or optionally cracked PatchGuard.
 
 Changelog
 v1.0.0.0: First version.
 v1.0.0.1: Added help/usage when no parameters are supplied. Added option to wipe/delete any of the 12-15 records. Added more specific output informing about how to use chkdsk when done.
+v1.0.0.2: Implemented a kernel mode driver to overcome some of the restrictions in previous versions. Added support for "the newish" MFT record sizes of 4096 bytes.
